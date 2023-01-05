@@ -1,0 +1,1 @@
+2023-01-04 18:38:27,664 : DEBUG : Mismatch : Got 2 detections : Expected 5 detections : Bounding box coordinates of detected objects [[146, 165, 335, 284], [175, 287, 317, 480]]

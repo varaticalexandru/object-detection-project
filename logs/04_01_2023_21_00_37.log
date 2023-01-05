@@ -1,0 +1,4 @@
+2023-01-04 21:00:37,700 : DEBUG : Mismatch : Got 3 detections : Expected 4 detections : Bounding box coordinates of detected objects [[187, 149, 344, 294], [340, 233, 461, 379], [190, 306, 359, 480]]
+2023-01-04 21:00:44,933 : DEBUG : Mismatch : Got 3 detections : Expected 4 detections : Bounding box coordinates of detected objects [[191, 136, 348, 282], [349, 213, 467, 356], [203, 292, 372, 474]]
+2023-01-04 21:00:48,594 : DEBUG : Mismatch : Got 3 detections : Expected 4 detections : Bounding box coordinates of detected objects [[189, 135, 346, 280], [347, 216, 467, 361], [202, 290, 370, 476]]
+2023-01-04 21:00:52,181 : DEBUG : Mismatch : Got 3 detections : Expected 4 detections : Bounding box coordinates of detected objects [[194, 126, 349, 270], [351, 211, 475, 358], [192, 293, 367, 479]]

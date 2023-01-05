@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>img_254.jpg</filename>
+	<path>C:\Users\Admin\Pictures\cards_dataset\train\img_254.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>416</width>
+		<height>416</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>card</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>86</xmin>
+			<ymin>117</ymin>
+			<xmax>310</xmax>
+			<ymax>282</ymax>
+		</bndbox>
+	</object>
+</annotation>
