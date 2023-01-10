@@ -11,22 +11,20 @@ import tensorflow as tf
 import numpy as np
 import cv2 as cv
 
-import config
-
 cwd = os.getcwd()
 
-MODEL_PATH = config.MODEL_PATH
-MODEL_NAME = config.MODEL_NAME
+MODEL_PATH = f'{cwd}/model'
+MODEL_NAME = 'model_1.tflite'
 
 model_path = f'{MODEL_PATH}/{MODEL_NAME}'
 
 boxes_idx, classes_idx, scores_idx = 1, 3, 0
 
-min_conf_threshold = 0.6
-imW = 640
-imH = 480
+min_conf_threshold = 0.6 # minimum confidence threshold
+imW = 640 # image width
+imH = 480 # image height
 
-labels = ['card']
+labels = ['card'] # classes
 
 
 
@@ -83,7 +81,7 @@ class Window(QDialog):
         # load ui
         loadUi('app.ui', self)
         self.numberText.setText("0")
-        self.textEdit.setText("0")
+        self.targetEdit.setText("0")
 
         # thread
         self.Worker1 = Worker1(pipe)
@@ -99,13 +97,13 @@ class Window(QDialog):
     # start
     def Start(self):
         self.Worker1.start()
-        self.textEdit_log.append(f"Success opening video capture")
-        self.textEdit_log.append(f"INFO: Created TensorFlow Lite XNNPACK delegate for CPU.\n")
+        self.logEdit.append(f"Success opening video capture")
+        self.logEdit.append(f"INFO: Created TensorFlow Lite XNNPACK delegate for CPU.\n")
 
 
     # validate
     def Validate(self):
-        self.target = int(self.textEdit.toPlainText())    # read input number of detections
+        self.target = int(self.targetEdit.toPlainText())    # read input number of detections
         self.validate = 1
 
     # slot (function)
@@ -120,7 +118,7 @@ class Window(QDialog):
 
             name = r'{}'.format("captures/" + datetime.now().strftime("%d_%m_%Y_%H_%M_%S") + ".jpg")
             #print(f"Capture successfully saved: {name}")
-            self.textEdit_log.append(f"Match : Capture successfully saved: {name}")
+            self.logEdit.append(f"Match : Capture successfully saved: {name}")
             cv.imwrite(name, cv.cvtColor(Frame, cv.COLOR_BGR2RGB))
 
         # debug if number of detections != target
@@ -138,7 +136,7 @@ class Window(QDialog):
 
             logging.debug(f'Mismatch : Got {DetectionsNumber} detections : Expected {self.target} detections : Bounding box coordinates of detected objects {Coords}')
             #print(f"Logged successfully: {name}")
-            self.textEdit_log.append(f"Mismatch : Logged successfully: {name}")
+            self.logEdit.append(f"Mismatch : Logged successfully: {name}")
 
         self.validate = 0
         self.target = 0
@@ -146,7 +144,7 @@ class Window(QDialog):
     # cancel
     def CancelFeed(self):
         self.Worker1.stop()
-        self.textEdit_log.append(f"Video stopped")
+        self.logEdit.append(f"Video stopped")
 
 
 # qthread class
@@ -178,7 +176,7 @@ class Worker1(QThread):
 
         if not capture.isOpened():
             print("Error. Could not open the VideoCapture.")
-            #self.textEdit_log.append(f"Error. Could not open the VideoCapture.")
+            #self.logEdit.append(f"Error. Could not open the VideoCapture.")
             sys.exit(1)
         
         while self.ThreadActive:
