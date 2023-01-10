@@ -108,8 +108,8 @@ class Window(QDialog):
 
     # slot (function)
     def ImageUpdateSlot(self, Coords, Frame, Image, DetectionsNumber):
-        self.videoLabel.setPixmap(QPixmap.fromImage(Image))
-        self.numberText.setText(f"{DetectionsNumber}")
+        self.videoLabel.setPixmap(QPixmap.fromImage(Image)) # display image on videoLabel
+        self.numberText.setText(f"{DetectionsNumber}") # write number of detected objects
 
         # save capture/frame if number of detections = target
         if self.validate and self.target and self.target == DetectionsNumber:
@@ -221,6 +221,7 @@ class Worker1(QThread):
                         cv.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv.FILLED) # Draw white box to put label text in
                         cv.putText(frame, label, (xmin, label_ymin-7), cv.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
 
+                # create QImage object
                 qimage = QImage(frame.data, frame.shape[1], frame.shape[0], QImage.Format_RGB888)
                 resized = qimage.scaled(imW, imH, Qt.KeepAspectRatio)
                 
