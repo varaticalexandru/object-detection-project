@@ -1,4 +1,4 @@
-# IIoT object detection & counting project
+# IIoT object detection & counting application
 
 - Video demonstration:
 
